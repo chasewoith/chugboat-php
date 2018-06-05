@@ -110,7 +110,7 @@ RUN php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 # ============================
 RUN mkdir /etc/apache2/ssl
 
-RUN openssl genrsa -des3 -passout pass:x -out server.pass.key 2048
+RUN openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out server.pass.key
 RUN openssl rsa -passin pass:x -in server.pass.key -out /etc/apache2/ssl/apache.key
 RUN rm server.pass.key
 RUN openssl req -new -key /etc/apache2/ssl/apache.key -out /etc/apache2/ssl/server.csr  \
