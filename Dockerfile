@@ -53,7 +53,7 @@ RUN apt-get install -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libmcrypt-dev \
-    libpng12-dev \
+    libpng-dev \
     libpq-dev \
 	zlib1g-dev libicu-dev g++ \
     sqlite3 libsqlite3-dev \
@@ -62,13 +62,13 @@ RUN apt-get install -y \
     libssh2-1 \
 	libxslt-dev
 
-RUN apt-get install -y git vim cron htop zip unzip pwgen curl wget chkconfig ruby rubygems ruby-dev screen openssl openssh-server nano ncdu zsh
+RUN apt-get install -y git vim cron htop zip unzip pwgen curl wget ruby rubygems ruby-dev screen openssl openssh-server nano ncdu zsh
 
 # ============================
 # CONFIG PHP EXTENSIONS
 # ============================
-RUN docker-php-ext-install gd
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+RUN docker-php-ext-install gd
 RUN docker-php-ext-install iconv
 RUN docker-php-ext-install mcrypt
 RUN docker-php-ext-install mbstring
