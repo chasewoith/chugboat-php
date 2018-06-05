@@ -171,6 +171,7 @@ RUN chsh -s /bin/zsh dev
 # Install NodeJS and Yarn
 # =======================================
 RUN apt-get install -y apt-transport-https
+RUN apt-get install -y gnupg
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
